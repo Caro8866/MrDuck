@@ -143,4 +143,10 @@ button[name="submit"]:hover {
   border-radius: 5px;
   padding: 8px 12px;
   margin: 10px 0;
+  text-align: right;
+}
+
+.duck-message {
+  text-align: left !important;
+  background-color: #ffd500 !important;
 }
