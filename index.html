@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <div class="duck-image">
+          <img src="MrDuck.png" alt="rubber duck in suit holding a stock chart" />
+          <div class="popup-bubble">Quack Quack</div>
+        </div>
+        <h1>Mr Duck</h1>
+      </div>
+    </header>
+    <main>
+      <section class="messageHistory">
+        <h2>Message History</h2>
+        <ol class="messages"></ol>
+      </section>
+
+      <form action="" id="message-submission">
+        <textarea name="message" id="message" cols="0" rows="10" required placeholder="Type your problem here..."></textarea>
+        <button name="submit" type="submit">Ask Mr Duck</button>
+      </form>
+    </main>
+    <footer></footer>
+    <audio id="quackAudio" src="quack.mp3"></audio>
+    <script src="main.js"></script>
+    <script src="duck.js"></script>
+  </body>
+</html>

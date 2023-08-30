@@ -1,0 +1,146 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 2rem;
+}
+
+header {
+  background-color: rgb(0, 0, 0);
+  color: #ffd500;
+  padding: 1.5rem 2rem;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 5rem;
+}
+
+.logo img {
+  max-width: 100px;
+  height: auto;
+}
+
+.duck-image:hover .popup-bubble {
+  display: block;
+}
+
+.duck-image img:hover {
+  animation: rotate 0.6s 2;
+}
+
+.popup-bubble {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  max-width: 200px; /* Set a maximum width for the bubble */
+  color: #ffd500;
+}
+
+.popup-bubble:after {
+  content: "";
+  position: absolute;
+  top: 50%; /* Position the tail just below the bubble */
+  left: 0%; /* Center the tail horizontally */
+  margin-left: -10px; /* Adjust this to position the tail */
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent #fff transparent;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 2rem;
+}
+
+textarea {
+  height: 100px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+}
+
+button[name="submit"] {
+  width: 100%;
+  height: 100%;
+  padding: 10px 20px;
+  background-color: #ffd500;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+button[name="submit"]:hover {
+  background-color: #f0a001;
+}
+
+.messageHistory {
+  width: 100%;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.messages li {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px 12px;
+  margin: 10px 0;
+}
