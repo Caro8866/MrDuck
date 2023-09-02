@@ -1,53 +1,57 @@
 const form = document.getElementById("message-submission");
 const messageInput = document.getElementById("message");
 
+// Retrieve messages from LocalStorage when the page loads
+window.addEventListener("load", () => {
+  const storedMessages = JSON.parse(localStorage.getItem("messages")) || [];
+  messages = storedMessages;
+  displayMessages();
+});
+
 form.addEventListener("submit", handleMessageSubmit);
 
 messageInput.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
-    event.preventDefault(); // Prevent the default behavior (form submission, new line in textarea, etc.)
-    handleMessageSubmit(event); // Call the function to handle message submission
+    event.preventDefault();
+    handleMessageSubmit(event);
   }
 });
-// message array
+
 let messages = [];
 
 function handleMessageSubmit(e) {
-  e.preventDefault(); // Prevent form submission
-
-  // Get the text entered in the textarea
+  e.preventDefault();
   const messageText = document.getElementById("message").value;
-
-  // Create a new <li> element
   const newMessageItem = document.createElement("li");
-
-  // Set the text content of the <li> to the message text
   newMessageItem.textContent = messageText;
-
-  // Find the <ol> element with the class "messages"
   const messageList = document.querySelector(".messages");
-
-  // Append the new <li> to the message list
   messageList.appendChild(newMessageItem);
-
-  // Append message to array
   messages.push(messageText);
-
-  // Clear the textarea
   document.getElementById("message").value = "";
-
-  // Delay and then add duck's message
+  saveMessagesToLocalStorage(); // Save messages to LocalStorage
   setTimeout(() => {
-    // Create a new <li> element for the duck's response
     const newDuckMessageItem = document.createElement("li");
-
-    // Set the text content of the <li> to the duck's response
     newDuckMessageItem.textContent = "Quack Quack";
-
-    // Add a class to the duck's message for styling
     newDuckMessageItem.classList.add("duck-message");
-
-    // Append the new <li> to the message list
     messageList.appendChild(newDuckMessageItem);
-  }, 1500); // Delay in milliseconds (adjust as needed)
+  }, 1500);
 }
+
+// Function to save messages to LocalStorage
+function saveMessagesToLocalStorage() {
+  localStorage.setItem("messages", JSON.stringify(messages));
+}
+
+// Function to display messages from the messages array
+function displayMessages() {
+  const messageList = document.querySelector(".messages");
+  messageList.innerHTML = ""; // Clear existing messages
+  messages.forEach((messageText) => {
+    const newMessageItem = document.createElement("li");
+    newMessageItem.textContent = messageText;
+    messageList.appendChild(newMessageItem);
+  });
+}
+
+// Call displayMessages() initially to load messages from LocalStorage
+displayMessages();
